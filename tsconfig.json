@@ -8,6 +8,11 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "": [
+        "./src"
+      ]
+    },
     "typeRoots": [
       "/src/types/index"
     ],
