@@ -1,35 +1,38 @@
 import { Form, Formik } from "formik";
-import React, { useState } from "react";
-import { BookCategories, FormikSubmitEvent, SearchOptions } from "../types";
-import FormField from "components/FormField";
-import FormSelect from "components/FormSelect";
-import InputGroup from "components/InputGroup";
+import React from "react";
+import { BookCategories, FormikSubmitEvent, SearchOptions } from "types";
+import FormField from "components/ui/forms/FormField";
+import FormSelect from "components/ui/forms/FormSelect";
+import InputGroup from "components/ui/buttons/InputGroup";
 import { AiOutlineSearch } from 'react-icons/ai'
-import IconButton from "components/IconButton";
+import IconButton from "components/ui/buttons/IconButton";
 import capitalize from "utils/capitalize";
+import { useAppDispatch, useAppSelector } from "lib/hooks";
+import { fetchBooksByOptions, setOptions } from "features/books/booksSlice";
+import { object, string } from 'yup'
 
-// TODO: Add redux logic
+const validationSchema = object({
+ name: string().required(),
+})
+
 const SearchForm: React.FC = () => {
- const [searchOptions, setSearch] = useState<SearchOptions>({
-	category: BookCategories.ALL,
-	name: '',
-	sortBy: 'relevance'
- })
+ const initialValues = useAppSelector(state => state.books.searchOptions)
+ const dispatch = useAppDispatch()
 
  const onSubmit: FormikSubmitEvent<SearchOptions> = async (values) => {
-	// temp plug for debugging
-	console.log(values)
+	dispatch(setOptions(values))
+	dispatch(fetchBooksByOptions(values))
  }
 
  return (
-		 <div className="h-full w-full mt-10">
-			<Formik initialValues={searchOptions} onSubmit={onSubmit}>
+		 <div className="w-full">
+			<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
 			 <Form className="flex flex-col gap-y-4">
 				<InputGroup>
 				 <FormField placeholder="Name..." label="" name="name" />
 				 <IconButton type="submit" icon={<AiOutlineSearch />} />
 				</InputGroup>
-				<div className="flex gap-x-4">
+				<div className="flex flex-col gap-4 sm:flex-row">
 				 <FormSelect label="Category" name="category">
 					{Object.keys(BookCategories).map((category, index) => (
 							<option key={index + 1} value={category}>
