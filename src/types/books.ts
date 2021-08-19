@@ -58,6 +58,7 @@ export interface VolumeInfo {
  title: string;
  subtitle: string;
  authors?: string[];
+ description?: string;
  publishedDate: string;
  industryIdentifiers: IndustryIdentifier[];
  readingModes: ReadingModes;
