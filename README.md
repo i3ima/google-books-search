@@ -8,6 +8,10 @@
 - [x] Add image component
 - [x] Add linting & pre-commit checks
 
+## Tests
+
+For CI tests i use Cypress, also i generate code-coverage reports and it's current 92%
+
 ## Stack
 
 - Vite, bundler
