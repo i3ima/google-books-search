@@ -1,5 +1,12 @@
 # An application for searching for books in the Google Books API
 
+## TODO
+
+- [ ] Add docker config
+- [ ] Add tests
+- [ ] Rework fetch function
+- [ ] Add image component
+
 ## Stack
 * Vite, bundler
 * React, library for building UI
