@@ -9,9 +9,9 @@ const StyledParagraph = styled.p`
   margin: 0;
 `
 
-const Paragraph: React.FC<ParagraphProps> = ({ children }) => {
+const Paragraph: React.FC<ParagraphProps> = ({ children, ...props }) => {
  return (
-		 <StyledParagraph>
+		 <StyledParagraph {...props}>
 			{children}
 		 </StyledParagraph>
  );

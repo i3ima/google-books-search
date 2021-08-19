@@ -22,7 +22,7 @@ const StyledInput = styled.input`
 
   padding: 0.25rem;
   border: rgb(107, 114, 128) solid 2px;
-  border-radius: 0.375rem;
+  border-radius: 0.575rem;
 
 `
 

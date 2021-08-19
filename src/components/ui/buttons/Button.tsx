@@ -7,12 +7,13 @@ export const StyledButton = styled.button`
   transition-duration: 150ms;
 
   :focus {
-    border-color: rgb(147, 197, 253);
+    border-color: var(--focus);
+		
   }
 
-  background-color: rgb(75, 85, 99);
+  background-color: var(--button);
   padding: 0.5rem;
-  border-color: rgb(75, 85, 99);
+  border-color: var(--button);
   border-width: 2px;
   border-radius: 0.375rem;
 `

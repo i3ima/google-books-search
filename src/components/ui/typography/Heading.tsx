@@ -4,7 +4,6 @@ import { ParagraphProps } from "types";
 
 const StyledParagraph = styled.p`
   font-weight: 700;
-  font-size: 1.125rem;
   line-height: 1.75rem;
   margin: 0;
 `

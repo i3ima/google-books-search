@@ -31,7 +31,7 @@ const FormSelect: React.FC<IProps> = ({ label, children, size: _, ...props }) =>
  return (
 		 <div className="flex flex-grow items-center space-x-2">
 			<label htmlFor={field.name}>{label} </label>
-			<StyledSelect {...field}>
+			<StyledSelect title={field.name} {...field}>
 			 {children}
 			</StyledSelect>
 		 </div>
