@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit'
-import { BookCategories, SearchOptions, Volume } from "../../types";
-import { fetchBooks } from "../../lib/api/books";
+import { BookCategories, SearchOptions, Volume, VolumeInfo } from "types";
+import { fetchBooks } from "lib/api/books";
 
 interface State {
  fetchedBooks: Volume[]
- selectedBook: {}
+ selectedBook: VolumeInfo | null
  searchOptions: SearchOptions
  totalItems: number
  loading: 'idle' | 'pending'
@@ -13,7 +13,7 @@ interface State {
 
 const initialState: State = {
  fetchedBooks: [],
- selectedBook: {},
+ selectedBook: null,
  totalItems: 0,
  searchOptions: {
 	name: '',
@@ -47,6 +47,9 @@ export const booksSlice = createSlice({
  reducers: {
 	setOptions: (state, action: PayloadAction<SearchOptions>) => {
 	 state.searchOptions = action.payload
+	},
+	selectBook: (state, action) => {
+	 state.selectedBook = action.payload
 	}
  },
  extraReducers: builder => {
@@ -68,13 +71,13 @@ export const booksSlice = createSlice({
 			 state.loading === 'idle' ? state.loading = 'pending' : null
 			})
 			.addCase(loadMoreByOptions.fulfilled, (state, action) => {
-			 state.totalItems = action.payload.items.length
 			 state.fetchedBooks.push(...action.payload.items)
+			 state.totalItems = state.fetchedBooks.length
 			 state.loading === 'pending' ? state.loading = 'idle' : null
 			})
  }
 })
 
-export const { setOptions } = booksSlice.actions
+export const { setOptions, selectBook } = booksSlice.actions
 
 export const booksReducer = booksSlice.reducer
