@@ -4,6 +4,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 require('dotenv').config()
 
+if (!process.env.GOOGLE_API_KEY) throw Error('Not found google api key in your .env. Aborting')
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [reactRefresh(), tsconfigPaths()],
