@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.root,
+#modal,
+#root {
+    --background: #374151;
+    --button: #4B5563;
+    --focus: #93C5FDFF;
+}
