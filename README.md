@@ -3,9 +3,9 @@
 ## TODO
 
 - [X] Add docker config
-- [ ] Add tests
-- [ ] Rework fetch function
-- [ ] Add image component
+- [X] Add tests
+- [ ] Rework fetch function. But, should I?
+- [X] Add image component
 
 ## Stack
 * Vite, bundler
