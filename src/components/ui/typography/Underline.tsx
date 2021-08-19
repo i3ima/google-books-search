@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { ParagraphProps } from "../../../types";
+import { ParagraphProps } from "types";
 
 const UnderlineParagraph = styled.p`
 	text-decoration: underline;
