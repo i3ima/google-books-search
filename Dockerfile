@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY . ./
 COPY  package.json ./
 COPY yarn.lock ./
-COPY vite.config.js ./
+COPY vite.config.ts ./
 RUN yarn install && yarn build
 
 COPY /dist ./
