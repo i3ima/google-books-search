@@ -9,28 +9,31 @@ import IconButton from "components/ui/buttons/IconButton";
 import capitalize from "utils/capitalize";
 import { useAppDispatch, useAppSelector } from "lib/hooks";
 import { fetchBooksByOptions, setOptions } from "features/books/booksSlice";
-import { object, string } from 'yup'
-
-const validationSchema = object({
- name: string().required(),
-})
 
 const SearchForm: React.FC = () => {
  const initialValues = useAppSelector(state => state.books.searchOptions)
  const dispatch = useAppDispatch()
 
- const onSubmit: FormikSubmitEvent<SearchOptions> = async (values) => {
+ const onEnterPress = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+	return event.key === 'enter' ? event.currentTarget.click() : null
+ }
+
+ const onSubmit: FormikSubmitEvent<SearchOptions> = async (values, helpers) => {
+  if (values.name === '') {
+   helpers.setFieldError('name', 'name is required')
+	 return
+	}
 	dispatch(setOptions(values))
 	dispatch(fetchBooksByOptions(values))
  }
 
  return (
-		 <div className="w-full">
-			<Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+		 <div className="w-full md:w-8/12 lg:w-6/12">
+			<Formik initialValues={initialValues} onSubmit={onSubmit}>
 			 <Form className="flex flex-col gap-y-4">
 				<InputGroup>
 				 <FormField placeholder="Name..." label="" name="name" />
-				 <IconButton type="submit" icon={<AiOutlineSearch />} />
+				 <IconButton onKeyPress={(event => onEnterPress(event))} type="submit" icon={<AiOutlineSearch />} />
 				</InputGroup>
 				<div className="flex flex-col gap-4 sm:flex-row">
 				 <FormSelect label="Category" name="category">
