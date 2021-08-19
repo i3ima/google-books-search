@@ -15,14 +15,14 @@ const StyledContainer = styled.div`
 const Thumbnail: React.FC<IProps> = ({ src, ...props }) => {
 
  if (!src) return (
-		 <StyledContainer>
+		 <StyledContainer id={"thumbnail"}>
 			<Paragraph>
 			 No cover
 			</Paragraph>
 		 </StyledContainer>)
 
  return (
-		 <img {...props} src={src} alt={''} />
+		 <img id="thumbnail" {...props} src={src} alt={''} />
  );
 };
 

@@ -28,14 +28,14 @@ const SearchForm: React.FC = () => {
  }
 
  return (
-		 <div className="w-full md:w-8/12 lg:w-6/12">
+		 <div id="SearchForm" className="w-full md:w-8/12 lg:w-6/12">
 			<Formik initialValues={initialValues} onSubmit={onSubmit}>
 			 <Form className="flex flex-col gap-y-4">
 				<InputGroup>
 				 <FormField placeholder="Name..." label="" name="name" />
 				 <IconButton onKeyPress={(event => onEnterPress(event))} type="submit" icon={<AiOutlineSearch />} />
 				</InputGroup>
-				<div className="flex flex-col gap-4 sm:flex-row">
+				<div id="category" className="flex flex-col gap-4 sm:flex-row">
 				 <FormSelect label="Category" name="category">
 					{Object.keys(BookCategories).map((category, index) => (
 							<option key={index + 1} value={category}>
