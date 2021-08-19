@@ -6,6 +6,7 @@ import Modal from "components/ui/modals/Modal";
 import { useAppSelector } from "lib/hooks";
 import Paragraph from "components/ui/typography/Paragraph";
 import { RemoveScroll } from "react-remove-scroll";
+import Thumbnail from "../../components/ui/image/Thumbnail";
 
 
 const BookModal: React.FC = () => {
@@ -21,8 +22,7 @@ const BookModal: React.FC = () => {
 		 <RemoveScroll>
 			<Modal>
 			 <div className="flex flex-col md:flex-row w-full h-full pt-10 gap-4 overflow-y-auto">
-				{imageLinks ? <img className="w-64 h-96" alt=''
-													 src={imageLinks.smallThumbnail || imageLinks.thumbnail} /> : 'No cover'}
+				<Thumbnail className="w-64 h-96" src={imageLinks?.thumbnail || imageLinks?.large}/>
 				<div className="flex flex-col gap-y-2">
 				 <Underline className="text-gray-300">
 					{categories ? (categories.join(', ')) : 'No categories'}

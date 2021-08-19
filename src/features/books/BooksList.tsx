@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../lib/hooks";
 import { AiOutlineLoading } from 'react-icons/ai'
 import ErrorMessage from "components/ui/ErrorMessage";
-import BookCard from "features/modal/BookCard";
+import BookCard from "components/BookCard";
 import Paragraph from "components/ui/typography/Paragraph";
 import BookModal from "features/modal/BookModal";
 

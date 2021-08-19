@@ -5,7 +5,8 @@ import Paragraph from "components/ui/typography/Paragraph";
 import Underline from "components/ui/typography/Underline";
 import { useAppDispatch } from "lib/hooks";
 import { selectBook } from "features/books/booksSlice";
-import { showModal } from "./modalSlice";
+import { showModal } from "../features/modal/modalSlice";
+import Thumbnail from "./ui/image/Thumbnail";
 
 interface IProps extends VolumeInfo {
 }
@@ -21,9 +22,7 @@ const BookCard: React.FC<IProps> = (vInfo) => {
  return (
 		 <div onClick={onCardClick}
 					className="transition cursor-pointer min-h-96 bg-gray-600 p-2 rounded-lg flex items-center flex-col space-y-4 hover:bg-gray-500">
-			{imageLinks ? (
-							<img className="w-48 h-56" alt="No cover" src={imageLinks.smallThumbnail || imageLinks.thumbnail} />)
-					: <p className="text-md h-2 w-24">No cover</p>}
+			<Thumbnail className="w-48 h-56" src={imageLinks?.large || imageLinks?.thumbnail} />
 			<div className="w-full flex flex-col ">
 			 <Underline>
 				{categories ? categories[0] : 'No categories'}
