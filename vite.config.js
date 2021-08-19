@@ -16,7 +16,6 @@ export default defineConfig({
         target: 'https://www.googleapis.com/books/v1',
         changeOrigin: true,
         secure: true,
-        ssl: process.env.MODE === 'production',
         rewrite: (path) => path.replace(/^\/api/, '') + `&key=${process.env.GOOGLE_API_KEY}`
       },
     }

@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [ ] Add docker config
+- [X] Add docker config
 - [ ] Add tests
 - [ ] Rework fetch function
 - [ ] Add image component
@@ -18,6 +18,11 @@
 
 ```shell
 yarn install
+```
+
+## Example of .env
+```dotenv
+GOOGLE_API_KEY=YOUR_KEY
 ```
 
 ## Development
