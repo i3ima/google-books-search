@@ -1,4 +1,3 @@
 import { HTMLAttributes } from "react";
 
-
-export interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {}
+export type ParagraphProperties = HTMLAttributes<HTMLParagraphElement>;

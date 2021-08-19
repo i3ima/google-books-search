@@ -1,31 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import classes from './Modal.module.scss';
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineClose } from "react-icons/ai";
 import { useAppDispatch } from "lib/hooks";
 import { closeModal } from "features/modal/modalSlice";
+import classes from "./Modal.module.scss";
 
-const root = document.getElementById('modal')!
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = document.querySelector("#modal")!;
 
 const Modal: React.FC = ({ children }) => {
- const dispatch = useAppDispatch()
- let element = document.createElement('div')
+  const dispatch = useAppDispatch();
+  const element = document.createElement("div");
 
- useEffect(() => {
-	root.appendChild(element)
+  useEffect(() => {
+    root.append(element);
 
-	return () => {
-	 root.removeChild(element)
-	}
- })
+    return () => {
+      element.remove();
+    };
+  });
 
- return createPortal(
-		 <div className={classes.modal}>
-			{children}
-			<button onClick={() => dispatch(closeModal())} className={classes.modalClose}>
-			 <AiOutlineClose size={25}/>
-			</button>
-		 </div>, element)
+  return createPortal(
+    <div className={classes.modal}>
+      {children}
+      <button
+        type="button"
+        onClick={() => dispatch(closeModal())}
+        className={classes.modalClose}
+      >
+        <AiOutlineClose size={25} />
+      </button>
+    </div>,
+    element
+  );
 };
 
 export default Modal;

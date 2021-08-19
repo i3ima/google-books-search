@@ -8,34 +8,35 @@ import { selectBook } from "features/books/booksSlice";
 import { showModal } from "../features/modal/modalSlice";
 import Thumbnail from "./ui/image/Thumbnail";
 
-interface IProps extends VolumeInfo {
+interface IProperties {
+  volumeInfo: VolumeInfo;
 }
 
-const BookCard: React.FC<IProps> = (vInfo) => {
- const dispatch = useAppDispatch()
- const { imageLinks, categories, title, authors } = vInfo
+const BookCard: React.FC<IProperties> = ({ volumeInfo }) => {
+  const dispatch = useAppDispatch();
+  const { imageLinks, categories, title, authors } = volumeInfo;
 
- const onCardClick = () => {
-	dispatch(selectBook(vInfo))
-	dispatch(showModal())
- }
- return (
-		 <div onClick={onCardClick}
-					className="transition cursor-pointer min-h-96 bg-gray-600 p-2 rounded-lg flex items-center flex-col space-y-4 hover:bg-gray-500">
-			<Thumbnail className="w-48 h-56" src={imageLinks?.large || imageLinks?.thumbnail} />
-			<div className="w-full flex flex-col ">
-			 <Underline>
-				{categories ? categories[0] : 'No categories'}
-			 </Underline>
-			 <Heading className="text-lg">
-				{title}
-			 </Heading>
-			 <Paragraph>
-				{authors ? authors.join(', ') : 'No authors'}
-			 </Paragraph>
-			</div>
-		 </div>
- )
-}
+  const onCardClick = () => {
+    dispatch(selectBook(volumeInfo));
+    dispatch(showModal());
+  };
+  return (
+    <div
+      aria-hidden="true"
+      onClick={() => onCardClick()}
+      className="transition cursor-pointer min-h-96 bg-gray-600 p-2 rounded-lg flex items-center flex-col space-y-4 hover:bg-gray-500"
+    >
+      <Thumbnail
+        className="w-48 h-56"
+        src={imageLinks?.large || imageLinks?.thumbnail}
+      />
+      <div className="w-full flex flex-col ">
+        <Underline>{categories ? categories[0] : "No categories"}</Underline>
+        <Heading className="text-lg">{title}</Heading>
+        <Paragraph>{authors ? authors.join(", ") : "No authors"}</Paragraph>
+      </div>
+    </div>
+  );
+};
 
-export default BookCard
+export default BookCard;

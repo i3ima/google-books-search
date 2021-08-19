@@ -1,14 +1,12 @@
 import React, { ButtonHTMLAttributes } from "react";
 import { StyledButton } from "./Button";
 
-interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
- icon: JSX.Element
+interface IProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon: JSX.Element;
 }
 
-const IconButton: React.FC<IProps> = ({ icon, ...props }) => (
-				<StyledButton {...props}>
-				 {icon}
-				</StyledButton>
-		)
+const IconButton: React.FC<IProperties> = ({ icon, ...properties }) => (
+  <StyledButton {...properties}>{icon}</StyledButton>
+);
 
-export default IconButton
+export default IconButton;

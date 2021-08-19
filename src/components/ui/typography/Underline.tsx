@@ -1,17 +1,14 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import { ParagraphProps } from "types";
+import { ParagraphProperties } from "types";
 
 const UnderlineParagraph = styled.p`
-	text-decoration: underline;
-`
+  text-decoration: underline;
+`;
 
-const Underline: React.FC<ParagraphProps> = ({ children, ...props }) => {
- return (
-		 <UnderlineParagraph {...props}>
-			{children}
-		 </UnderlineParagraph>
- );
-};
+const Underline: React.FC<ParagraphProperties> = ({
+  children,
+  ...properties
+}) => <UnderlineParagraph {...properties}>{children}</UnderlineParagraph>;
 
 export default Underline;
