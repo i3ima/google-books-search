@@ -1,14 +1,21 @@
 import React from 'react';
 import SearchForm from "./features/SearchForm";
+import BooksList from "./features/books/BooksList";
+import AdaptiveLayout from "./components/ui/AdaptiveLayout";
+import LoadMore from "components/LoadMore";
+import Heading from "./components/ui/typography/Heading";
 
 const App: React.FC = () => {
-  return (
-    <div className="text-center container mx-auto">
-      <header className="space-y-4 h-screen flex flex-col flex-col items-center justify-center text-white">
-       <SearchForm />
-      </header>
-    </div>
-  );
+ return (
+		 <AdaptiveLayout>
+			<Heading>
+			 Search for books!
+			</Heading>
+			<SearchForm />
+			<BooksList />
+			<LoadMore />
+		 </AdaptiveLayout>
+ );
 };
 
 export default App;
