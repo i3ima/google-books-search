@@ -2,17 +2,19 @@
 
 ## TODO
 
-- [X] Add docker config
-- [X] Add tests
+- [x] Add docker config
+- [x] Add tests
 - [ ] Rework fetch function. But, should I?
-- [X] Add image component
+- [x] Add image component
+- [x] Add linting & pre-commit checks
 
 ## Stack
-* Vite, bundler
-* React, library for building UI
-* Tailwind, utility-first css framework
-* Redux, for state-management
-* Cypress, for CI tests
+
+- Vite, bundler
+- React, library for building UI
+- Tailwind, utility-first css framework
+- Redux, for state-management
+- Cypress, for CI tests
 
 ## Install dependencies
 
@@ -21,16 +23,19 @@ yarn install
 ```
 
 ## Example of .env
+
 ```dotenv
 GOOGLE_API_KEY=YOUR_KEY
 ```
 
 ## Development
+
 ```shell
 yarn dev
 ```
 
 ## Building
+
 ```shell
 yarn build
 ```
@@ -38,5 +43,5 @@ yarn build
 ## Preview
 
 ```shell
-yarn preview 
+yarn preview
 ```
