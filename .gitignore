@@ -1,7 +1,12 @@
 node_modules
 .DS_Store
 dist
+.idea
+*.log
 dist-ssr
 *.local
 .env
 .env.staging
+.eslintcache
+coverage
+.nyc_output
