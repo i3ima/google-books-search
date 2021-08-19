@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { booksReducer } from "../features/books/booksSlice";
+import { modalReducer } from "../features/modal/modalSlice";
 
 export const store = configureStore({
   reducer: {
-    books: booksReducer
+    books: booksReducer,
+    modal: modalReducer
   },
 });
 
